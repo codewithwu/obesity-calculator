@@ -5,6 +5,7 @@
   import { getThresholds } from '../lib/thresholds';
   import { push } from 'svelte-spa-router';
   import waistImg from '../assets/waist-measurement.jpg';
+  import wechatQrImg from '../assets/wechat-qr.png';
   import type { Ethnicity, Measurements } from '../lib/types';
 
   let height = $state<number | null>(null);
@@ -50,6 +51,14 @@
     <span class="github-cta-icon" aria-hidden="true">★</span>
     <span>觉得有用？欢迎到 GitHub 给个 <strong>Star</strong> 支持一下</span>
   </a>
+
+  <aside class="support" aria-label="支持作者">
+    <img class="support-qr" src={wechatQrImg} alt="微信收款码" width="64" height="64" />
+    <div class="support-text">
+      <strong>如果对你有帮助</strong>
+      <span>扫码请作者喝杯咖啡 ☕</span>
+    </div>
+  </aside>
 
   <header class="page-head">
     <h1>2026 体重指标速查</h1>
@@ -160,6 +169,39 @@
   }
   .github-cta strong {
     font-weight: 600;
+  }
+  .support {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    align-self: center;
+    padding: 0.5rem 0.875rem;
+    border-radius: var(--r-md);
+    background: var(--hero-ok);
+    border: 1px solid var(--border);
+    max-width: 100%;
+  }
+  .support-qr {
+    width: 64px;
+    height: 64px;
+    border-radius: var(--r-sm);
+    display: block;
+    flex-shrink: 0;
+    background: #fff;
+    padding: 2px;
+  }
+  .support-text {
+    display: flex;
+    flex-direction: column;
+    font-size: 0.78rem;
+    color: var(--fg-muted);
+    line-height: 1.4;
+  }
+  .support-text strong {
+    color: var(--fg);
+    font-weight: 600;
+    font-size: 0.85rem;
+    margin-bottom: 0.1rem;
   }
   .page-head h1 {
     font-size: 1.5rem;

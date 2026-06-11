@@ -30,6 +30,7 @@ export interface DiagnosisMetrics {
   whtrLabel: '正常' | '超标';
   waistLabel: '正常' | '超标';
   waistThresholdUsed: number;
+  waistMale: number;
 }
 
 export interface DiagnosisResult {

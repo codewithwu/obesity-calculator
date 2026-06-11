@@ -11,7 +11,8 @@ const mockResult: DiagnosisResult = {
     bmiLabel: '超重',
     whtrLabel: '超标',
     waistLabel: '超标',
-    waistThresholdUsed: 80
+    waistThresholdUsed: 80,
+    waistMale: 90
   },
   triggers: ['BMI 25.4 处于超重范围', '腰高比 0.51 ≥ 0.5'],
   recommendation: '建议前往医院。',

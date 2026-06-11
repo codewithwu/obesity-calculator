@@ -81,6 +81,19 @@ describe('diagnose - 亚裔', () => {
     expect(r.metrics.waistThresholdUsed).toBe(80);
   });
 
+  it('亚裔 metrics.waistMale 为 90', () => {
+    const r = diagnose(standardAsian);
+    expect(r.metrics.waistMale).toBe(90);
+  });
+
+  it('非亚裔 metrics.waistMale 为 102', () => {
+    const r = diagnose(
+      { height: 170, weight: 75, waist: 80 },
+      'non-asian'
+    );
+    expect(r.metrics.waistMale).toBe(102);
+  });
+
   it('正常分类下 recommendation 文案正确', () => {
     const r = diagnose({ height: 170, weight: 60, waist: 75 });
     expect(r.recommendation).toContain('维持');

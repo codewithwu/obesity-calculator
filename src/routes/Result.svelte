@@ -9,11 +9,18 @@
 
   let result = $state<DiagnosisResult | null>(null);
   let waist = $state<number | null>(null);
+  let toast = $state<string | null>(null);
+  let toastVisible = $state(false);
 
   onMount(() => {
     const m = $measurements;
     if (!m) {
-      push('/');
+      toast = '请先完成测算';
+      toastVisible = true;
+      setTimeout(() => {
+        toastVisible = false;
+        setTimeout(() => push('/'), 200);
+      }, 1800);
       return;
     }
     const e = $ethnicity;
@@ -37,8 +44,14 @@
     <ResultCard {result} {waist} />
     <Disclaimer text={result.disclaimer} />
     <a class="guide-link" href="#/guide">了解 2026 新标准 →</a>
-  {:else}
+  {:else if !toast}
     <p class="loading">正在加载...</p>
+  {/if}
+
+  {#if toast}
+    <div class="toast" class:visible={toastVisible} role="status" aria-live="polite">
+      {toast}
+    </div>
   {/if}
 </div>
 
@@ -70,5 +83,25 @@
     text-decoration: none;
     text-align: center;
     font-size: 0.9rem;
+  }
+  .toast {
+    position: fixed;
+    left: 50%;
+    bottom: 2rem;
+    transform: translateX(-50%) translateY(1rem);
+    background: var(--hero-warn);
+    color: var(--fg);
+    padding: 0.75rem 1.25rem;
+    border-radius: 0.5rem;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+    font-size: 0.95rem;
+    opacity: 0;
+    transition: opacity 0.2s ease, transform 0.2s ease;
+    z-index: 1000;
+    pointer-events: none;
+  }
+  .toast.visible {
+    opacity: 1;
+    transform: translateX(-50%) translateY(0);
   }
 </style>

@@ -81,7 +81,8 @@ export function diagnose(
       bmiLabel: bmiLabel(bmi, e),
       whtrLabel: whtr >= t.whtr ? '超标' : '正常',
       waistLabel: m.waist >= waistTh ? '超标' : '正常',
-      waistThresholdUsed: waistTh
+      waistThresholdUsed: waistTh,
+      waistMale: t.waistMale
     },
     triggers,
     recommendation: RECOMMENDATIONS[category],

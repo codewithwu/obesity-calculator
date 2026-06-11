@@ -48,7 +48,7 @@
   </section>
 
   <p class="waist-note">
-    腰围采用女性标准 ({result.metrics.waistThresholdUsed}cm)；男性实际阈值为 {result.metrics.waistThresholdUsed + 10}cm
+    腰围采用女性标准 ({result.metrics.waistThresholdUsed}cm)；男性实际阈值为 {result.metrics.waistMale}cm
   </p>
 </section>
 

@@ -2,6 +2,7 @@
   import InputField from '../lib/components/InputField.svelte';
   import { measurements, ethnicity, setEthnicity } from '../lib/store';
   import { diagnose } from '../lib/diagnose';
+  import { getThresholds } from '../lib/thresholds';
   import { push } from 'svelte-spa-router';
   import waistImg from '../assets/waist-measurement.jpg';
   import type { Ethnicity, Measurements } from '../lib/types';
@@ -14,6 +15,9 @@
   let ethnicityOpen = $state(false);
 
   let currentEthnicity = $derived($ethnicity);
+  let thresholds = $derived(getThresholds(currentEthnicity));
+  let ethnicityLabel = $derived(currentEthnicity === 'asian' ? '亚裔' : '非亚裔');
+  let bmiNormalMax = $derived((thresholds.bmiOverweightMin - 0.1).toFixed(1));
 
   let heightValid = $derived(height !== null && height >= 100 && height <= 250);
   let weightValid = $derived(weight !== null && weight >= 20 && weight <= 300);
@@ -57,6 +61,28 @@
       开始测算
     </button>
   </form>
+
+  <section class="reference" aria-label="健康与超标参考范围">
+    <h2 class="ref-title">参考标准（{ethnicityLabel}）</h2>
+    <div class="ref-grid" role="table">
+      <div class="ref-head" role="rowheader"></div>
+      <div class="ref-head ref-ok" role="columnheader">正常</div>
+      <div class="ref-head ref-bad" role="columnheader">超标</div>
+
+      <div class="ref-metric" role="rowheader">BMI</div>
+      <div class="ref-cell ref-ok" role="cell">18.5 – {bmiNormalMax}</div>
+      <div class="ref-cell ref-bad" role="cell">≥ {thresholds.bmiOverweightMin}</div>
+
+      <div class="ref-metric" role="rowheader">腰围</div>
+      <div class="ref-cell ref-ok" role="cell">女 &lt; {thresholds.waistDefault} / 男 &lt; {thresholds.waistMale} cm</div>
+      <div class="ref-cell ref-bad" role="cell">女 ≥ {thresholds.waistDefault} / 男 ≥ {thresholds.waistMale}</div>
+
+      <div class="ref-metric" role="rowheader">WHtR</div>
+      <div class="ref-cell ref-ok" role="cell">&lt; {thresholds.whtr}</div>
+      <div class="ref-cell ref-bad" role="cell">≥ {thresholds.whtr}</div>
+    </div>
+    <p class="ref-note">腰围采用女/默认无性别阈值，更保守（不输入性别时）</p>
+  </section>
 
   <details class="hint" bind:open={waistHintOpen}>
     <summary>不知道腰围怎么量？</summary>
@@ -194,5 +220,56 @@
     background: var(--surface-1);
     color: var(--fg);
     font-family: inherit;
+  }
+  .reference {
+    background: var(--surface-1);
+    border-radius: var(--r-md);
+    padding: 0.875rem 1rem;
+  }
+  .ref-title {
+    font-size: 0.95rem;
+    font-weight: 600;
+    margin: 0 0 0.625rem;
+    color: var(--fg);
+  }
+  .ref-grid {
+    display: grid;
+    grid-template-columns: auto 1fr 1fr;
+    gap: 0.375rem 0.5rem;
+    font-size: 0.82rem;
+    align-items: stretch;
+  }
+  .ref-head {
+    font-weight: 600;
+    color: var(--fg-muted);
+    text-align: center;
+    padding-bottom: 0.3rem;
+    border-bottom: 1px solid var(--border);
+    font-size: 0.78rem;
+  }
+  .ref-metric {
+    color: var(--fg);
+    font-weight: 500;
+    align-self: center;
+  }
+  .ref-cell {
+    padding: 0.4rem 0.5rem;
+    border-radius: var(--r-sm);
+    text-align: center;
+    font-variant-numeric: tabular-nums;
+  }
+  .ref-ok {
+    background: var(--hero-ok);
+    color: var(--accent-green);
+  }
+  .ref-bad {
+    background: var(--hero-danger);
+    color: var(--accent-coral);
+  }
+  .ref-note {
+    margin: 0.625rem 0 0;
+    font-size: 0.72rem;
+    color: var(--fg-muted);
+    line-height: 1.5;
   }
 </style>

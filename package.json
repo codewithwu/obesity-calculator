@@ -3,7 +3,7 @@
   "private": true,
   "version": "0.1.0",
   "type": "module",
-  "description": "基于 2026 ADA 新指南的肥胖评估工具",
+  "description": "基于 2026 ADA 新指南的体重指标速查工具",
   "scripts": {
     "dev": "vite",
     "build": "vite build",

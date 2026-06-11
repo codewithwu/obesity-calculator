@@ -37,7 +37,7 @@
 
 <div class="home">
   <header class="page-head">
-    <h1>2026 肥胖评估</h1>
+    <h1>2026 体重指标速查</h1>
     <p class="lead">基于 ADA 最新指南</p>
   </header>
 

@@ -4,6 +4,9 @@ import { svelte } from '@sveltejs/vite-plugin-svelte';
 export default defineConfig({
   plugins: [svelte()],
   base: './',
+  resolve: {
+    conditions: ['browser']
+  },
   test: {
     environment: 'happy-dom',
     setupFiles: ['./src/test-setup.ts'],

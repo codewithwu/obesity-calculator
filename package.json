@@ -1,0 +1,33 @@
+{
+  "name": "obesity-calculator",
+  "private": true,
+  "version": "0.1.0",
+  "type": "module",
+  "description": "基于 2026 ADA 新指南的肥胖评估工具",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview",
+    "test": "vitest run",
+    "test:watch": "vitest",
+    "check": "svelte-check --tsconfig ./tsconfig.json"
+  },
+  "devDependencies": {
+    "@sveltejs/vite-plugin-svelte": "^4.0.0",
+    "@testing-library/jest-dom": "^6.4.0",
+    "@testing-library/svelte": "^5.2.0",
+    "@testing-library/user-event": "^14.5.0",
+    "@tsconfig/svelte": "^5.0.0",
+    "@types/node": "^20.0.0",
+    "happy-dom": "^15.0.0",
+    "svelte": "^5.0.0",
+    "svelte-check": "^4.0.0",
+    "tslib": "^2.6.0",
+    "typescript": "^5.4.0",
+    "vite": "^5.4.0",
+    "vitest": "^2.0.0"
+  },
+  "dependencies": {
+    "svelte-spa-router": "^4.0.1"
+  }
+}

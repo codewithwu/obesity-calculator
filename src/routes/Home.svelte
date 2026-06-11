@@ -41,6 +41,16 @@
 </script>
 
 <div class="home">
+  <a
+    class="github-cta"
+    href="https://github.com/codewithwu/obesity-calculator"
+    target="_blank"
+    rel="noopener noreferrer"
+  >
+    <span class="github-cta-icon" aria-hidden="true">★</span>
+    <span>觉得有用？欢迎到 GitHub 给个 <strong>Star</strong> 支持一下</span>
+  </a>
+
   <header class="page-head">
     <h1>2026 体重指标速查</h1>
     <p class="lead">基于 ADA 最新指南</p>
@@ -125,6 +135,31 @@
   }
   .page-head {
     text-align: center;
+  }
+  .github-cta {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+    align-self: center;
+    padding: 0.5rem 0.875rem;
+    border-radius: 999px;
+    background: var(--hero-warn);
+    color: var(--accent-amber);
+    text-decoration: none;
+    font-size: 0.82rem;
+    border: 1px solid var(--border);
+    transition: border-color 0.15s, background 0.15s;
+  }
+  .github-cta:hover,
+  .github-cta:focus-visible {
+    border-color: var(--accent-amber);
+    outline: none;
+  }
+  .github-cta-icon {
+    font-size: 0.95rem;
+  }
+  .github-cta strong {
+    font-weight: 600;
   }
   .page-head h1 {
     font-size: 1.5rem;

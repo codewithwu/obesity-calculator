@@ -1,1 +1,85 @@
-/* 占位，全局样式见 Task 15 */
+:root {
+  /* 颜色 */
+  --bg: #faf8f5;
+  --surface-1: #ffffff;
+  --surface-warn: #fff7ed;
+  --border: #e5e0d8;
+
+  --fg: #1f1d1a;
+  --fg-muted: #6b6760;
+
+  --accent: #c97b3f;
+  --accent-fg: #ffffff;
+  --accent-green: #4a8a5e;
+  --accent-amber: #c97b3f;
+  --accent-coral: #c45a4f;
+
+  --hero-bg: #f5f0e8;
+  --hero-muted: #efece7;
+  --hero-ok: #e8f0e9;
+  --hero-warn: #fcefd9;
+  --hero-danger: #f9dfd9;
+
+  /* 间距 / 圆角 */
+  --r-sm: 0.4rem;
+  --r-md: 0.625rem;
+  --r-lg: 0.75rem;
+  --r-xl: 1rem;
+
+  /* 字体 */
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'PingFang SC',
+    'Hiragino Sans GB', 'Microsoft YaHei', 'Helvetica Neue', Arial, sans-serif;
+  font-size: 16px;
+  line-height: 1.5;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  margin: 0;
+  padding: 0;
+  background: var(--bg);
+  color: var(--fg);
+  min-height: 100%;
+}
+
+body {
+  min-height: 100vh;
+}
+
+button {
+  font: inherit;
+}
+
+a {
+  color: var(--accent);
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg: #1a1815;
+    --surface-1: #252320;
+    --surface-warn: #2d261d;
+    --border: #3a3631;
+
+    --fg: #f5f0e8;
+    --fg-muted: #9a948a;
+
+    --accent: #d68a52;
+    --accent-fg: #1a1815;
+    --accent-green: #6ba97e;
+    --accent-amber: #d68a52;
+    --accent-coral: #d5706a;
+
+    --hero-bg: #252320;
+    --hero-muted: #252320;
+    --hero-ok: #1f2a21;
+    --hero-warn: #2d261d;
+    --hero-danger: #2d201e;
+  }
+}

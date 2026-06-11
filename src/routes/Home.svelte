@@ -3,6 +3,7 @@
   import { measurements, ethnicity, setEthnicity } from '../lib/store';
   import { diagnose } from '../lib/diagnose';
   import { push } from 'svelte-spa-router';
+  import waistImg from '../assets/waist-measurement.jpg';
   import type { Ethnicity, Measurements } from '../lib/types';
 
   let height = $state<number | null>(null);
@@ -65,6 +66,10 @@
       <li>呼气末、吸气开始时测量，不要憋气</li>
       <li>保持尺子水平，紧贴皮肤，不要勒紧</li>
     </ol>
+    <figure class="hint-figure">
+      <img src={waistImg} alt="腰围测量示意图：软尺在肚脐水平位置绕腰一圈" loading="lazy" />
+      <figcaption>软尺在肚脐水平位置绕腰一周</figcaption>
+    </figure>
   </details>
 
   <div class="ethnicity">
@@ -142,6 +147,23 @@
     margin: 0.75rem 0 0;
     padding-left: 1.25rem;
     line-height: 1.7;
+  }
+  .hint-figure {
+    margin: 0.875rem 0 0;
+    text-align: center;
+  }
+  .hint-figure img {
+    max-width: 100%;
+    height: auto;
+    max-height: 320px;
+    border-radius: 0.5rem;
+    display: block;
+    margin: 0 auto;
+  }
+  .hint-figure figcaption {
+    margin-top: 0.4rem;
+    font-size: 0.8rem;
+    color: var(--fg-muted);
   }
   .link {
     background: none;
